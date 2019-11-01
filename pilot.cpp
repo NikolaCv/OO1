@@ -1,24 +1,25 @@
 #include "pilot.h"
 #include <iostream>
 #include <cstring>
+#include <string>
 
 using namespace std;
 
 pilot::pilot()
 {
-	name[0] = '\0';
+	name = '\0';
 	flight_hours = 0;
 	flight_info = false;
 }
 
-pilot::pilot(const char c[], int f, bool b)
+pilot::pilot(string c, int f, bool b)
 {
-	strcpy_s(name, c);
+	name = c;
 	flight_hours = f;
 	flight_info = b;
 }
 
-char * pilot::get_name()
+string pilot::get_name()
 {
 	return name;
 }

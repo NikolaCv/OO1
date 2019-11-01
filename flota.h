@@ -1,22 +1,29 @@
-#pragma once
+#ifndef FLOTA_H
+#define FLOTA_H
 #include <vector>
 #include "avion.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 class flota
 {
 public:
-	flota(const char c[]);
+	flota();
+	flota(std::string c);
+	flota(const flota& f) = default;
+	flota(flota&& f) = default;
 	int number_of_airplanes();
 	int number_of_max_passengers();
-	avion biggest_airplane();
-	void add_airplane(const avion a);
+	string get_name();
+	avion* biggest_airplane();
+	flota& add_airplane(avion* a);
 	friend ostream& operator<<(ostream& out, const flota& f);
 	~flota() = default;
 private:
-	char name[20];
-	vector<avion> airplanes;
+	std::string name;
+	vector<avion*> airplanes;
 };
 
+#endif
