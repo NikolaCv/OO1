@@ -4,7 +4,8 @@
 #include "Korisnik.h"
 #include "ListaObavestenja.h"
 
-void testObavestenje() {
+void testObavestenje()
+{
 	Obavestenje o1(nullptr);
 	Obavestenje o2(nullptr);
 	Obavestenje o3(o2);
@@ -20,7 +21,8 @@ void testObavestenje() {
 	std::cout << o1.isRead() << std::endl;
 }
 
-void testObjava() {
+void testObjava()
+{
 	Objava o1(nullptr, "Andrija vas je bocnuo.");
 	Objava o2(nullptr, "Banovani ste sa platforme.");
 	Objava o3 = o2;
@@ -37,7 +39,8 @@ void testObjava() {
 	std::cout << o6 << endl; //ispisivace 12 za id jer ce se premestanjem promeniti ID
 }
 
-void testKorisnik() {
+void testKorisnik()
+{
 	std::cout << "************************" << std::endl;
 	Korisnik andrija("Andrija");
 	Korisnik nikola("Nikola");
@@ -64,7 +67,8 @@ void testKorisnik() {
 	cout << +nikola.getNotifications() << endl;
 }
 
-int main() {
+int main()
+{
 	testObavestenje();
 	testObjava();
 	testKorisnik();
