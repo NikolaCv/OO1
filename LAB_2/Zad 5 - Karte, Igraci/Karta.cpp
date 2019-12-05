@@ -2,11 +2,7 @@
 
 unsigned Karta::statID = 0;
 
-Karta::~Karta()
-{
-}
-
-Karta::Karta(const string & name, int needed_magic_energy):name(name),magic_energy_needed(needed_magic_energy)
+Karta::Karta(const string name, int needed_magic_energy):name(name),magic_energy_needed(needed_magic_energy)
 {
 }
 

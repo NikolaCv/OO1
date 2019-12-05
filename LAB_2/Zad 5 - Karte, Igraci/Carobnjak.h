@@ -6,7 +6,8 @@
 class Carobnjak:public Borac
 {
 public:
-	void upotrebi(Igrac& player1, Igrac& player2) const override;
+	Carobnjak(const string name, int needed_magic_energy, int strength);
+	void upotrebi(Igrac& player2) const override;
 	string toString() const override;
 };
 

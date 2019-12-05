@@ -20,6 +20,9 @@ public:
 	Zbirka* getRuka() const;
 	Zbirka* getAktivirane() const;
 	bool operator[](Karta * card);
+	bool deleteCard(Karta * card);//isto radi kao operator[]
+	bool sendCardToGraveyard(Karta * card);
+	void decreaseHP(int damage);
 private:
 	string name;
 	int hp, magic_energy;

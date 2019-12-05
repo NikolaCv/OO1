@@ -48,9 +48,10 @@ void testKorisnik()
 	andrija.send(new Objava(nullptr, "Mark Zakerberg vas je dodao za prijatelja."), &nikola);
 	std::cout << andrija<<endl;
 	std::cout << nikola << endl;
+
 	std::cout << "************************" << std::endl;
 
-	cout << +nikola.getNotifications() << endl;
+	cout << nikola.getNotifications() << endl;
 
 	nikola.getNotifications()();
 	nikola.getNotifications()[13]->readIt();

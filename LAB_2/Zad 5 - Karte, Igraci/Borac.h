@@ -6,11 +6,7 @@
 class Borac:public Karta
 {
 public:
-	Borac(const string& name, int needed_magic_energy, int strength);
-	Borac(const Borac& card) = delete;
-	Borac(Borac&& card) = delete;
-	Borac& operator=(const Borac& card) = delete;
-	Borac& operator=(Borac&& card) = delete;
+	Borac(const string name, int needed_magic_energy, int strength);
 	int getStrength() const override;
 	bool operator<(const Borac& fighter);
 	bool operator>(const Borac& fighter);

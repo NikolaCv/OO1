@@ -7,6 +7,7 @@ class ListaObavestenja
 {
 public:
 	ListaObavestenja();
+	~ListaObavestenja();
 	ListaObavestenja(const ListaObavestenja& notification_list) = delete;
 	ListaObavestenja(ListaObavestenja&& notification_list) = delete;
 	ListaObavestenja& operator=(const ListaObavestenja& notification_list) = delete;

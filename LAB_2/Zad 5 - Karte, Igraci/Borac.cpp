@@ -1,9 +1,6 @@
 #include "Borac.h"
-Borac::~Borac()
-{
-}
 
-Borac::Borac(const string & name, int needed_magic_energy, int strength):Karta(name,needed_magic_energy),strength(strength)
+Borac::Borac(const string name, int needed_magic_energy, int strength):Karta(name,needed_magic_energy),strength(strength)
 {
 }
 

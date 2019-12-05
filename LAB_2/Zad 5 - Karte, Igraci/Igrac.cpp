@@ -1,9 +1,5 @@
 #include "Igrac.h"
 
-Igrac::~Igrac()
-{
-}
-
 Igrac::Igrac(const string name, int hp, int magic_energy, Zbirka* collection):name(name),hp(hp),magic_energy(magic_energy),spil(collection)
 {
 }
@@ -54,6 +50,22 @@ bool Igrac::operator[](Karta * card)
 	(*ruka)(card->getID());
 	(*aktivirane) += card;
 	magic_energy -= card->getMagicEnergyNeeded();
+
+	return true;
+}
+
+bool Igrac::deleteCard(Karta * card)
+{
+	return (*this)[card];
+}
+
+bool Igrac::sendCardToGraveyard(Karta * card)
+{
+	if ((*aktivirane)[card->getID()] == nullptr)//nema karte u aktiviranim
+		return false;
+
+	(*aktivirane)(card->getID());
+	(*groblje) += card;
 
 	return true;
 }

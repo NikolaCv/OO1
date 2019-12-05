@@ -11,7 +11,7 @@ class Karta
 {
 public:
 	enum KATEGORIJA { CAROLIJA, BORAC };
-	Karta(const string& name, int needed_magic_energy);
+	Karta(const string name, int needed_magic_energy);
 	Karta(const Karta& card) = delete;
 	Karta(Karta&& card) = delete;
 	Karta& operator=(const Karta& card) = delete;
@@ -19,7 +19,7 @@ public:
 	string getName() const;
 	unsigned getID() const;
 	int getMagicEnergyNeeded() const;
-	virtual void upotrebi(Igrac& player1, Igrac& player2) const = 0;
+	virtual void upotrebi(Igrac& player2) const = 0;
 	virtual KATEGORIJA getCategory() const = 0;
 	virtual int getStrength() const = 0;
 	virtual string toString() const;

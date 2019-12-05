@@ -63,6 +63,11 @@ ListaObavestenja::ListaObavestenja():prvi(nullptr),posl(nullptr)
 {
 }
 
+ListaObavestenja::~ListaObavestenja()
+{
+	brisi();
+}
+
 ListaObavestenja & ListaObavestenja::operator+=(Obavestenje * notification)
 {
 	Node* novi = new Node(notification);

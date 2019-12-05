@@ -2,11 +2,11 @@
 #include "Zbirka.h"
 #include "Igrac.h"
 
-Carobnjak::~Carobnjak()
+Carobnjak::Carobnjak(const string name, int needed_magic_energy, int strength):Borac(name, needed_magic_energy,strength)
 {
 }
 
-void Carobnjak::upotrebi(Igrac & player1, Igrac & player2) const
+void Carobnjak::upotrebi(Igrac & player2) const
 {
 	Zbirka* z = player2.getAktivirane();
 
@@ -22,13 +22,12 @@ void Carobnjak::upotrebi(Igrac & player1, Igrac & player2) const
 		}
 	}
 
-	player2.decreaseHP = 2 * getStrength();
+	player2.decreaseHP(2 * getStrength());
 
 	if (ind == -1)
 		return;
 
-	
-	//player2.//TODO iz aktivirane prebaci u groblje
+	player2.sendCardToGraveyard((*z)[ind]);
 }
 
 string Carobnjak::toString() const

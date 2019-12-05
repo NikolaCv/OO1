@@ -25,7 +25,7 @@ public:
 	void operator()(int index);
 	void operator()(unsigned id);
 	void operator~();
-	friend ostream& operator<<(ostream & out, const Zbirka collection);
+	friend ostream& operator<<(ostream & out, const Zbirka& collection);
 
 private:
 	Node* prvi, *posl;

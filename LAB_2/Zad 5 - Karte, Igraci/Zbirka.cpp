@@ -1,5 +1,5 @@
 #include "Zbirka.h"
-
+#include <time.h>
 
 
 Zbirka::Zbirka():prvi(nullptr),posl(nullptr)
@@ -21,10 +21,8 @@ Zbirka & Zbirka::operator+=(Karta * card)
 		prvi = novi;
 	}
 
-
 	len++;
 
-	return *this;
 	return *this;
 }
 
@@ -95,6 +93,7 @@ void Zbirka::operator()(int index)
 				break;
 			}
 		}
+		pret = tek;
 		tek = tek->next;
 		ind++;
 	}
@@ -132,7 +131,10 @@ void Zbirka::operator()(unsigned id)
 
 void Zbirka::operator~()
 {
-	int ind = rand() % len;
+	srand(time(NULL));
+	int a = rand();
+	int ind = a % len;
+	cout << a << endl << endl;
 	(*this)(ind);
 }
 
@@ -142,15 +144,15 @@ Zbirka::~Zbirka()
 	brisi();
 }
 
-ostream & operator<<(ostream & out, const Zbirka collection)
+ostream & operator<<(ostream & out, const Zbirka& collection)
 {
 	out << "ZBIRKA:" << endl;
 	
 	Zbirka::Node* tek = collection.prvi;
-
 	while (tek)
 	{
-		out << *tek->card << endl;
+		out << *tek->card;
+		out << endl;
 		tek = tek->next;
 	}
 
