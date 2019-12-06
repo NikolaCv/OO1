@@ -23,7 +23,7 @@ public:
 	bool sendCardFromHandToActivated(Karta * card);
 	bool sendCardFromActivatedToGraveyard(Karta * card);
 	void decreaseHP(int damage);
-	bool attack(Karta* card, Igrac* player);//igrac1.attack(card1,player2): igrac 1 napada igraca 2 pomocu karte card1, koja mora da bude aktivirana
+	bool attack(Karta* card, Igrac& player);//igrac1.attack(card1,player2): igrac 1 napada igraca 2 pomocu karte card1, koja mora da bude aktivirana
 	friend ostream& operator<<(ostream& out, const Igrac& player);
 private:
 	string name;

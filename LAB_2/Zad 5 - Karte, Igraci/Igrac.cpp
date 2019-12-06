@@ -86,7 +86,7 @@ void Igrac::decreaseHP(int damage)
 		hp = 0;
 }
 
-bool Igrac::attack(Karta * card, Igrac* player)
+bool Igrac::attack(Karta * card, Igrac& player)
 {
 	if ((*aktivirane)[card->getID()] == nullptr)//nema karte u aktiviranim
 		return false;

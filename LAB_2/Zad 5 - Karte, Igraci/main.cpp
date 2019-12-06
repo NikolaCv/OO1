@@ -96,7 +96,7 @@ void testIgraci()
 
 	cout << nikola << endl << andrija << endl;
 
-	nikola.attack(gandalf, &andrija);
+	nikola.attack(gandalf, andrija);
 
 	cout << nikola << endl << andrija << endl;
 }
