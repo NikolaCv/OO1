@@ -26,22 +26,9 @@ private:
 	string faliure;
 	Datum* date;
 	bool uklonjen;
-	void kopiraj(const Kvar& k)
-	{
-		faliure = k.faliure;
-		date = new Datum(*k.date);
-		uklonjen = k.uklonjen;
-	}
-	void premesti(const Kvar& k)
-	{
-		faliure = k.faliure;
-		date = k.date;
-		uklonjen = k.uklonjen;
-	}
-	void brisi()
-	{
-		delete date;
-	}
+	void kopiraj(const Kvar& k);
+	void premesti(const Kvar& k);
+	void brisi();
 };
 
 #endif

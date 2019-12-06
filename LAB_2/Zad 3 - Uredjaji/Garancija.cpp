@@ -85,6 +85,41 @@ int Garancija::getNumKvar()
 	return len;
 }
 
+void Garancija::brisi()
+{
+	while (prvi)
+	{
+		Lista *tek = prvi;
+		prvi = prvi->next;
+		delete tek;
+	}
+	posl = nullptr;
+}
+
+void Garancija::kopiraj(const Garancija & g)
+{
+	Lista* tek = g.prvi;
+	while (tek)
+	{
+		Lista* novi = new Lista(tek->kvar->kopija());
+		if (prvi == nullptr)
+			prvi = novi;
+		else
+			posl->next = novi;
+		posl = novi;
+		tek = tek->next;
+	}
+	len = g.len;
+}
+
+void Garancija::premesti(Garancija & g)
+{
+	prvi = g.prvi;
+	posl = g.posl;
+	len = g.len;
+	g.prvi = g.posl = nullptr;
+}
+
 ostream & operator<<(ostream & out, const Garancija & g)
 {
 	out << *g.pocetak << "-" << *g.kraj << "-broj kvarova:" << g.len;

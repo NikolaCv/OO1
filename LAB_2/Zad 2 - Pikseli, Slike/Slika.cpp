@@ -78,6 +78,44 @@ int Slika::getPicSize() const
 	return height*width*24;
 }
 
+void Slika::brisi()
+{
+	for (int i = 0; i < height; ++i)
+	{
+		for (int j = 0; j < width; ++j)
+		{
+			delete mapa[i][j];
+		}
+		delete[] mapa[i];
+	}
+	mapa = nullptr;
+}
+
+void Slika::kopiraj(const Slika & s)
+{
+	height = s.height;
+	width = s.width;
+
+	mapa = new Piksel**[height];
+
+	for (int i = 0; i < height; ++i)
+	{
+		mapa[i] = new Piksel*[width];
+		for (int j = 0; j < width; ++j)
+			mapa[i][j] = s.mapa[i][j]->kopija();
+	}
+}
+
+void Slika::premesti(Slika & s)
+{
+	height = s.height;
+	width = s.width;
+
+	mapa = s.mapa;
+
+	s.mapa = nullptr;
+}
+
 ostream & operator<<(ostream & out, const Slika & s)
 {
 	out << "Size: " << s.getPicSize() << endl;

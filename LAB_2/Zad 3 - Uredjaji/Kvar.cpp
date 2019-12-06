@@ -69,6 +69,25 @@ Kvar * Kvar::kopija()
 	return new Kvar(*this);
 }
 
+void Kvar::kopiraj(const Kvar & k)
+{
+	faliure = k.faliure;
+	date = new Datum(*k.date);
+	uklonjen = k.uklonjen;
+}
+
+void Kvar::premesti(const Kvar & k)
+{
+	faliure = k.faliure;
+	date = k.date;
+	uklonjen = k.uklonjen;
+}
+
+void Kvar::brisi()
+{
+	delete date;
+}
+
 ostream & operator<<(ostream & out, const Kvar & k)
 {
 	out << *k.date <<"\t"<< k.faliure;

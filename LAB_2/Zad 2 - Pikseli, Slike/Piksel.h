@@ -25,12 +25,6 @@ public:
 	int aritmetickaSredina() const;
 private:
 	int r, g, b;
-	void kopiraj(const Piksel& p)
-	{
-		r = p.r;
-		g = p.g;
-		b = p.b;
-	}
 };
 
 #endif

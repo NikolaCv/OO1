@@ -26,41 +26,9 @@ public:
 protected:
 	int width, height;
 	Piksel*** mapa;
-	void brisi()
-	{
-		for (int i = 0; i < height; ++i)
-		{
-			for (int j = 0; j < width; ++j)
-			{
-				delete mapa[i][j];
-			}
-			delete[] mapa[i];
-		}
-		mapa = nullptr;
-	}
-	void kopiraj(const Slika& s)
-	{
-		height = s.height;
-		width = s.width;
-
-		mapa = new Piksel**[height];
-
-		for (int i = 0; i < height; ++i)
-		{
-			mapa[i] = new Piksel*[width];
-			for (int j = 0; j < width; ++j)
-				mapa[i][j] = s.mapa[i][j]->kopija();
-		}
-	}
-	void premesti(Slika& s)
-	{
-		height = s.height;
-		width = s.width;
-
-		mapa = s.mapa;
-
-		s.mapa = nullptr;
-	}
+	void brisi();
+	void kopiraj(const Slika& s);
+	void premesti(Slika& s);
 
 };
 
