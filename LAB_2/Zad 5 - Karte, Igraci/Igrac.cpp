@@ -63,7 +63,7 @@ bool Igrac::sendCardFromHandToActivated(Karta * card)
 
 	(*ruka)(card->getID());
 	(*aktivirane) += card;
-	magic_energy -= card->getMagicEnergyNeeded();
+	decreaseMagicEnergy(card->getMagicEnergyNeeded());
 
 	return true;
 }
@@ -84,6 +84,11 @@ void Igrac::decreaseHP(int damage)
 	hp -= damage;
 	if (hp < 0)
 		hp = 0;
+}
+
+void Igrac::decreaseMagicEnergy(int energy)
+{
+	magic_energy -= energy;
 }
 
 bool Igrac::attack(Karta * card, Igrac& player)
