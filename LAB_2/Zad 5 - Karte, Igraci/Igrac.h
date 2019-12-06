@@ -12,6 +12,7 @@ public:
 	Igrac(Igrac&& player) = delete;
 	Igrac& operator=(const Igrac& player) = delete;
 	Igrac& operator=(Igrac&& player) = delete;
+	~Igrac();
 	string getName() const;
 	int getHP() const;
 	int getMagicEnergy() const;

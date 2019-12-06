@@ -7,6 +7,14 @@ Igrac::Igrac(const string name, int hp, int magic_energy, Zbirka* collection):na
 	groblje = new Zbirka;
 }
 
+Igrac::~Igrac()
+{
+	delete spil;
+	delete ruka;
+	delete aktivirane;
+	delete groblje;
+}
+
 string Igrac::getName() const
 {
 	return name;
