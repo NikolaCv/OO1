@@ -2,6 +2,7 @@
 #define ZBIRKA_H
 
 #include "Karta.h"
+#include "Carobnjak.h"
 
 class Zbirka
 {
@@ -16,12 +17,15 @@ public:
 		}
 	};
 	Zbirka();
-	//kopiranje i premestanje???
+	Zbirka(const Zbirka& collection);
+	Zbirka(Zbirka&& collection);
+	Zbirka& operator=(const Zbirka& collection);
+	Zbirka& operator=(Zbirka&& collection);
 	~Zbirka();
-	Zbirka& operator+=(Karta * card);
 	int getLength() const;
-	Karta* operator[](int index);
-	Karta* operator[](unsigned id);
+	Zbirka& operator+=(Karta * card);
+	Karta* operator[](int index) const;
+	Karta* operator[](unsigned id) const;
 	void operator()(int index);
 	void operator()(unsigned id);
 	void operator~();
@@ -30,18 +34,10 @@ public:
 private:
 	Node* prvi, *posl;
 	int len = 0;
-
-	void brisi()
-	{
-		while (prvi)
-		{
-			Node *tek = prvi;
-			prvi = prvi->next;
-			delete tek;
-		}
-		posl = nullptr;
-		len = 0;
-	}
+	void kopiraj(const Zbirka& collection);	//kada kopiramo pravimo novu kartu sa novim ID,
+											//i istim atributima, jer karta ne moze obicno da se kopira
+	void premesti(Zbirka& collection);		//ovde samo premestamo pokazivace
+	void brisi();
 };
 
 #endif

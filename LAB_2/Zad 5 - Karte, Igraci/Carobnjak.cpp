@@ -6,9 +6,9 @@ Carobnjak::Carobnjak(const string name, int needed_magic_energy, int strength):B
 {
 }
 
-void Carobnjak::upotrebi(Igrac & player2) const
+void Carobnjak::upotrebi(Igrac * player2) const
 {
-	Zbirka* z = player2.getAktivirane();
+	Zbirka* z = player2->getAktivirane();
 
 	int min_strength = INT_MAX;
 	int ind = -1;
@@ -22,12 +22,12 @@ void Carobnjak::upotrebi(Igrac & player2) const
 		}
 	}
 
-	player2.decreaseHP(2 * getStrength());
+	player2->decreaseHP(2 * getStrength());
 
 	if (ind == -1)
 		return;
 
-	player2.sendCardToGraveyard((*z)[ind]);
+	player2->sendCardFromActivatedToGraveyard((*z)[ind]);
 }
 
 string Carobnjak::toString() const

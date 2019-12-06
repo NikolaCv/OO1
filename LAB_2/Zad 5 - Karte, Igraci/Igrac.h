@@ -19,10 +19,12 @@ public:
 	Zbirka* getGroblje() const;
 	Zbirka* getRuka() const;
 	Zbirka* getAktivirane() const;
-	bool operator[](Karta * card);
-	bool deleteCard(Karta * card);//isto radi kao operator[]
-	bool sendCardToGraveyard(Karta * card);
+	bool sendCardFromSpilToHand(Karta * card);
+	bool sendCardFromHandToActivated(Karta * card);
+	bool sendCardFromActivatedToGraveyard(Karta * card);
 	void decreaseHP(int damage);
+	bool attack(Karta* card, Igrac* player);//igrac1.attack(card1,player2): igrac 1 napada igraca 2 pomocu karte card1, koja mora da bude aktivirana
+	friend ostream& operator<<(ostream& out, const Igrac& player);
 private:
 	string name;
 	int hp, magic_energy;

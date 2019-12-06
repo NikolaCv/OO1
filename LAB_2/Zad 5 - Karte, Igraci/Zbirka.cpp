@@ -6,15 +6,47 @@ Zbirka::Zbirka():prvi(nullptr),posl(nullptr)
 {
 }
 
+Zbirka::Zbirka(const Zbirka & collection)
+{
+	kopiraj(collection);
+}
+
+Zbirka::Zbirka(Zbirka && collection)
+{
+	premesti(collection);
+}
+
+Zbirka & Zbirka::operator=(const Zbirka & collection)
+{
+	if (this != &collection)
+	{
+		brisi();
+		kopiraj(collection);
+	}
+
+	return *this;
+}
+
+Zbirka & Zbirka::operator=(Zbirka && collection)
+{
+	if (this != &collection)
+	{
+		brisi();
+		premesti(collection);
+	}
+
+	return *this;
+}
+
 Zbirka & Zbirka::operator+=(Karta * card)
 {
 	Node* novi = new Node(card);
+
 	if (prvi == nullptr)
 	{
 		prvi = novi;
 		posl = novi;
 	}
-
 	else
 	{
 		novi->next = prvi;
@@ -31,7 +63,7 @@ int Zbirka::getLength() const
 	return len;
 }
 
-Karta * Zbirka::operator[](int index)
+Karta * Zbirka::operator[](int index) const
 {
 	Node* tek = prvi;
 	int ind = 0;
@@ -50,7 +82,7 @@ Karta * Zbirka::operator[](int index)
 
 }
 
-Karta * Zbirka::operator[](unsigned id)
+Karta * Zbirka::operator[](unsigned id) const
 {
 	Node* tek = prvi;
 	int ind = 0;
@@ -112,6 +144,7 @@ void Zbirka::operator()(unsigned id)
 			{
 				prvi = tek->next;
 				delete tek;
+				len--;
 				break;
 			}
 			else
@@ -122,9 +155,11 @@ void Zbirka::operator()(unsigned id)
 				{
 					posl = pret;
 				}
+				len--;
 				break;
 			}
 		}
+		pret = tek;
 		tek = tek->next;
 	}
 }
@@ -138,6 +173,45 @@ void Zbirka::operator~()
 	(*this)(ind);
 }
 
+void Zbirka::kopiraj(const Zbirka & collection)
+{
+	for (int i = 0; i < collection.len; ++i)
+	{
+		if (typeid(collection[i]) == typeid(Carobnjak))
+		{																//trenutno je jedini borac, a i karta koja postoji carobnjak
+			Karta* temp = new Carobnjak(collection[i]->getName(),		//treba da se doda else za druge vrste karata (borce i carolije) kada se ubace
+				collection[i]->getMagicEnergyNeeded(),
+				collection[i]->getStrength());
+			(*this) += temp;
+		}
+	}
+	len = collection.getLength();
+}
+
+void Zbirka::premesti(Zbirka & collection)
+{
+	for (int i = 0; i < collection.len; ++i)
+	{
+		(*this) += collection[i];
+	}
+	len = collection.getLength();
+
+	collection.brisi();
+}
+
+void Zbirka::brisi()
+{
+	while (prvi)
+	{
+		Node *tek = prvi;
+		prvi = prvi->next;
+		delete tek->card;
+		delete tek;
+	}
+	posl = nullptr;
+	len = 0;
+}
+
 
 Zbirka::~Zbirka()
 {
@@ -146,8 +220,6 @@ Zbirka::~Zbirka()
 
 ostream & operator<<(ostream & out, const Zbirka& collection)
 {
-	out << "ZBIRKA:" << endl;
-	
 	Zbirka::Node* tek = collection.prvi;
 	while (tek)
 	{

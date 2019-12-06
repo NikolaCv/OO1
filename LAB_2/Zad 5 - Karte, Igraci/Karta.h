@@ -19,10 +19,10 @@ public:
 	string getName() const;
 	unsigned getID() const;
 	int getMagicEnergyNeeded() const;
-	virtual void upotrebi(Igrac& player2) const = 0;
+	virtual string toString() const;//vraca specifican deo teksta za ispisivanje za ovu klasu. za ovu je prazan, za izvedene vraca nesto
+	virtual void upotrebi(Igrac* player2) const = 0;//useCard a.k.a. napadni
 	virtual KATEGORIJA getCategory() const = 0;
 	virtual int getStrength() const = 0;
-	virtual string toString() const;
 	friend ostream& operator<<(ostream & out, const Karta& card);
 private:
 	string name;
