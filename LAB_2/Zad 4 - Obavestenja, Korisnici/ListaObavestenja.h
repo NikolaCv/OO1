@@ -12,11 +12,11 @@ public:
 	ListaObavestenja(ListaObavestenja&& notification_list) = delete;
 	ListaObavestenja& operator=(const ListaObavestenja& notification_list) = delete;
 	ListaObavestenja& operator=(ListaObavestenja&& notification_list) = delete;
-	ListaObavestenja& operator+=(Obavestenje* notification);
-	ListaObavestenja& operator()();
-	int operator+();
-	ListaObavestenja& operator!();
-	ListaObavestenja& operator~();
+	ListaObavestenja& operator+=(Obavestenje* notification);//dodavanje notifikacije
+	ListaObavestenja& operator()();//pisanje svih neprocitanih notifikacija
+	int operator+();//return len
+	ListaObavestenja& operator!();//cita notifikacije
+	ListaObavestenja& operator~();//brise notifikacije
 	Obavestenje* operator[](int i);
 	friend ostream& operator<<(ostream & out, const ListaObavestenja& notification_list);
 
@@ -34,17 +34,7 @@ private:
 	Node* prvi, *posl;
 	int len = 0;
 
-	void brisi()
-	{
-		while (prvi)
-		{
-			Node *tek = prvi;
-			prvi = prvi->next;
-			delete tek;
-		}
-		posl = nullptr;
-		len = 0;
-	}
+	void brisi();
 };
 
 #endif

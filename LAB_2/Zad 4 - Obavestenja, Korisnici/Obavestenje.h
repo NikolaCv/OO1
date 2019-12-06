@@ -22,12 +22,14 @@ public:
 	bool isRead() const;	//proveri je li procitano
 	int getID() const;
 	Korisnik* getUser() const;
-	virtual string toString() const;
+	virtual string toString() const;//za ispisivanje dodatnih stvari za izvedene klase; za ovu vraca prazan string, za objavu vraca tekst
+											//tj. "specifican deo obavestenja"
 	friend ostream& operator<<(ostream& out, const Obavestenje& notification);
 	Obavestenje* kopija() const;
 	void addUser(Korisnik *user);
+
 protected:
-	void kopiraj(const Obavestenje& notification); //pretpostavka, novi id i novo vreme
+	void kopiraj(const Obavestenje& notification); //pretpostavka, kada se kopira, novo obavestenje dobija novi id i novo vreme
 	void premesti(Obavestenje& notification);
 
 private:

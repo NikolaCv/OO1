@@ -2,7 +2,7 @@
 #define KORISNIK_H
 
 #include "ListaObavestenja.h"
-//TODO kopija obavestenje i ispisivanje objave teksta
+
 class Korisnik
 {
 public:
@@ -11,11 +11,12 @@ public:
 	Korisnik(Korisnik&& user) = delete;
 	Korisnik& operator=(const Korisnik& user) = delete;
 	Korisnik& operator=(Korisnik&& user) = delete;
-	friend ostream& operator<<(ostream &out, const Korisnik& user);
 	void receive(Obavestenje * notification);
-	string getName() const;
 	void send(Obavestenje * notification, Korisnik* user) const;
-	ListaObavestenja& getNotifications();
+	string getName() const;
+	ListaObavestenja& getNotifications();//vraca listu obavestenja
+	friend ostream& operator<<(ostream &out, const Korisnik& user);
+
 private:
 	string name;
 	ListaObavestenja list;

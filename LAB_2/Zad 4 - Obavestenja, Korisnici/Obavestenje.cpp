@@ -95,6 +95,7 @@ Obavestenje & Obavestenje::operator=(Obavestenje && notification)
 ostream & operator<<(ostream & out, const Obavestenje & notification)
 {
 	struct tm* time = localtime(&notification.notif_time);
+	//ako nema korisnika jos uvek, pisem user missing, ako ima pisemo njegovo ime
 	string user_str = (notification.user == nullptr) ? "USER MISSING" : notification.user->getName();
 	out << notification.ID << "|" << user_str << "-" <<
 		time->tm_hour << ":" << time->tm_min << ":" << time->tm_sec << "\n" << notification.toString();

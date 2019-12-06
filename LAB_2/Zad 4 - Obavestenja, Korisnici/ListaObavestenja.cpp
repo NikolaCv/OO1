@@ -50,13 +50,26 @@ Obavestenje * ListaObavestenja::operator[](int i)
 		tek = tek->next;
 	}
 
-	if (tek == nullptr)
+	if (tek == nullptr)	//da ne pukne
 		return nullptr;
 
 	if(tek->notification->isRead() == false)
 		return tek->notification;
 	else
 		return nullptr;
+}
+
+void ListaObavestenja::brisi()
+{
+	while (prvi)
+	{
+		Node *tek = prvi;
+		prvi = prvi->next;
+		delete tek->notification;
+		delete tek;
+	}
+	posl = nullptr;
+	len = 0;
 }
 
 ListaObavestenja::ListaObavestenja():prvi(nullptr),posl(nullptr)
