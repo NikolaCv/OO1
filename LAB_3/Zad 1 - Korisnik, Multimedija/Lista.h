@@ -16,7 +16,7 @@ public:
 	Lista& operator=(Lista&& list);
 	~Lista();
 
-	int getLength();
+	int getLength() const;
 	Lista& operator+=(T new_data);
 	T& operator[](int index);
 	T operator[](int index) const;
@@ -89,7 +89,7 @@ Lista<T>::~Lista()
 }
 
 template<class T>
-inline int Lista<T>::getLength()
+inline int Lista<T>::getLength() const
 {
 	return length;
 }
