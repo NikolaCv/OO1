@@ -44,12 +44,12 @@ private:
 	int length;
 
 	void del();
-	void copy(const Lista& list);
-	void move(Lista& list);
+	//void copy(const Lista& list);
+	//void move(Lista& list);
 };
 
 template<class T>
-inline Lista<T>::Lista() :start(nullptr), end(nullptr), curr(nullptr), length(0)
+inline Lista<T>::Lista() :start(nullptr), end(nullptr), current(nullptr), length(0)
 {
 }
 /*
@@ -132,10 +132,7 @@ inline void Lista<T>::moveCurrent() const
 template<class T>
 inline void Lista<T>::moveCurrentAtStart() const
 {
-	if (current == nullptr) throw myExceptions::CurrentElementDoesntExist();
-
 	current = start;
-
 }
 
 template<class T>
@@ -169,6 +166,7 @@ inline void Lista<T>::deleteCurrent()
 	{
 		current = current->next;
 		start = current;
+		start->prev->next = nullptr;
 		delete start->prev;
 		start->prev = nullptr;
 	}
@@ -176,6 +174,7 @@ inline void Lista<T>::deleteCurrent()
 	{
 		current = current->prev;
 		end = current;
+		end->next->prev = nullptr;
 		delete end->next;
 		end->next = nullptr;
 	}
@@ -184,8 +183,10 @@ inline void Lista<T>::deleteCurrent()
 		current->prev->next = current->next;
 		Node* temp = current->next;
 		current->next->prev = current->prev;
+		current->prev = nullptr;
+		current->next = nullptr;
+		delete current;
 		current = temp;
-		delete temp;
 	}
 
 	length--;
@@ -232,8 +233,12 @@ inline void Lista<T>::move(Lista & list)
 template<class T>
 ostream & operator<<(ostream & out, const Lista<T> & list)
 {
-	for (int i = 0; i < list.length; ++i)
-		out << list[i] << endl;
+	auto temp = list.start;
+	while (temp)
+	{
+		out << temp->data << endl;
+		temp = temp->next;
+	}
 	return out;
 }
 
@@ -279,7 +284,7 @@ private:
 };
 
 template<class T>
-inline Lista<T*>::Lista() :start(nullptr), end(nullptr), curr(nullptr), length(0)
+inline Lista<T*>::Lista() :start(nullptr), end(nullptr), current(nullptr), length(0)
 {
 }
 
@@ -406,8 +411,12 @@ void Lista<T*>::del()
 template<class T>
 ostream & operator<<(ostream & out, const Lista<T*> & list)
 {
-	for (int i = 0; i < list.length; ++i)
-		out << *list[i] << endl;
+	auto temp = list.start;
+	while (temp)
+	{
+		out << *temp->data << endl;
+		temp = temp->next;
+	}
 	return out;
 }
 

@@ -16,6 +16,14 @@ namespace myExceptions
 		}
 	};
 
+	class InvalidDateIndexException
+	{
+		friend ostream& operator<<(ostream& out, const InvalidDateIndexException& p)
+		{
+			return out << "Nepostojeci indeks za datum. (InvalidDateIndexException)" << endl;
+		}
+	};
+
 }
 
 #endif
