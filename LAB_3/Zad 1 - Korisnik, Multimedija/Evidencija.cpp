@@ -9,7 +9,7 @@ Evidencija & Evidencija::operator+=(Korisnik * user)
 	return *this;
 }
 
-Korisnik * Evidencija::operator[](const string name)
+Korisnik * Evidencija::operator[](const string& name)
 {
 	for (int i = 0; i < list.getLength(); ++i)
 		if (list[i]->getName() == name)
@@ -18,7 +18,7 @@ Korisnik * Evidencija::operator[](const string name)
 	throw myExceptions::UserDoesntExistException();
 }
 
-Korisnik Evidencija::operator[](const string name) const
+Korisnik Evidencija::operator[](const string& name) const
 {
 	for (int i = 0; i < list.getLength(); ++i)
 		if (list[i]->getName() == name)
@@ -27,7 +27,7 @@ Korisnik Evidencija::operator[](const string name) const
 	throw myExceptions::UserDoesntExistException();
 }
 
-void Evidencija::operator()(const string name)
+void Evidencija::operator()(const string& name)
 {
 	for (int i = 0; i < list.getLength(); ++i)
 		if (list[i]->getName() == name)
@@ -39,7 +39,7 @@ void Evidencija::operator()(const string name)
 	throw myExceptions::UserDoesntExistException();
 }
 
-void Evidencija::changePassword(const string name, const string old_password, const string new_password)
+void Evidencija::changePassword(const string& name, const string& old_password, const string& new_password)
 {
 	for (int i = 0; i < list.getLength(); ++i)
 		if (list[i]->getName() == name)

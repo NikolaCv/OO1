@@ -10,17 +10,17 @@ class Evidencija
 {
 public:
 	Evidencija() = default;
-	Evidencija(const Evidencija& user) = delete;
-	Evidencija(Evidencija&& user) = delete;
-	Evidencija& operator=(const Evidencija& user) = delete;
-	Evidencija& operator=(Evidencija&& user) = delete;
+	Evidencija(const Evidencija& record) = delete;
+	Evidencija(Evidencija&& record) = delete;
+	Evidencija& operator=(const Evidencija& record) = delete;
+	Evidencija& operator=(Evidencija&& record) = delete;
 	~Evidencija() = default;
 
 	Evidencija& operator+=(Korisnik* user);
-	Korisnik* operator[](const string name);
-	Korisnik operator[](const string name) const;
-	void operator()(const string name);
-	void changePassword(const string name, const string old_password, const string new_password);
+	Korisnik* operator[](const string& name);
+	Korisnik operator[](const string& name) const;
+	void operator()(const string& name);
+	void changePassword(const string& name, const string& old_password, const string& new_password);
 	friend ostream& operator<<(ostream& out, const Evidencija& record);
 
 private:

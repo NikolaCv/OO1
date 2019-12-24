@@ -151,7 +151,7 @@ template<class T>
 void Lista<T>::operator()(int index)
 {
 	if (index < 0) throw myExceptions::InvalidIndexException();
-	Node* temp = start, * last = nullptr;
+	Node* temp = start, *last = nullptr;
 	int i = 0;
 	while (temp)
 	{

@@ -1,11 +1,11 @@
 #include "Korisnik.h"
 
-Korisnik::Korisnik(const string name, const string password) :name(name), password(password)
+Korisnik::Korisnik(const string& name, const string& password) :name(name), password(password)
 {
 	checkPasswordFormat(password);
 }
 
-void Korisnik::changePassword(const string old_password, const string new_password)
+void Korisnik::changePassword(const string& old_password, const string& new_password)
 {
 	if (old_password != password) throw myExceptions::IncorrectPasswordException();
 
