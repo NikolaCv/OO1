@@ -1,12 +1,8 @@
 #include "Slika.h"
 
-Slika::Slika(const string name, int height, int width) :Multimedija(name), width(width), height(height)
+Slika::Slika(const string name, unsigned height, unsigned width, unsigned pixel_size) :Multimedija(name), width(width), height(height), pixel_size(pixel_size)
 {
-	bytes = width * height;
+	bytes = width * height * pixel_size;
 	description = "[" + to_string(width) + "x" + to_string(height) + "->" + to_string(bytes) + "]";
 }
-/*
-void Slika::setPixelSize(int pixel_size)
-{
-	pixel_size = pixel_size;
-}*/
+

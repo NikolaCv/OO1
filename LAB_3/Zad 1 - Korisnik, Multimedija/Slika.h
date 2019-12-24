@@ -5,17 +5,18 @@
 #include "Multimedija.h"
 #include <string>
 #include <iostream>
+
 using namespace std;
 
 class Slika : public Multimedija
 {
 public:
-	Slika(const string name, int height, int width);
-	//?????????void setPixelSize(int pixel_size);
-	
+	Slika(const string name, unsigned height, unsigned width, unsigned pixel_size);
+	//string toString() const override;
+
 private:
-	int width, height;
-	//int pixel_size;
+	unsigned width, height, pixel_size;
+
 };
 
 #endif

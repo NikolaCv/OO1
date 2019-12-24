@@ -4,10 +4,10 @@
 #include "myExceptions.h"
 #include <iostream>
 #include <string>
+
 using namespace std;
 
-//opis = ?????
-//bytes isto sta?
+
 class Multimedija
 {
 public:
@@ -17,14 +17,14 @@ public:
 	Multimedija& operator=(const Multimedija& user) = default;
 	Multimedija& operator=(Multimedija&& user) = default;
 	~Multimedija() = default;
-
+	int getSize() const;
+	string getDescription() const;
+	virtual string toString() const;
 	friend ostream& operator<<(ostream & out, const Multimedija& multimedia);
 
 protected:
 	int bytes;
 	string description;
-
-private:
 	string name;
 };
 
