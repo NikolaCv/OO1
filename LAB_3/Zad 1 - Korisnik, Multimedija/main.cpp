@@ -1,6 +1,9 @@
 #include "myExceptions.h"
 #include "Korisnik.h"
 #include "Lista.h"
+#include "Multimedija.h"
+#include "Slika.h"
+#include "Evidencija.h"
 
 using namespace std;
 
@@ -27,14 +30,50 @@ void testLista()
 	Korisnik andrija("andrija", "sifra123");
 	Korisnik andrea("andrea", "sifra123");
 
-	list += nikola;
-	list += andrija;
-	list += andrea;
+	((list += nikola) += andrija) += andrea;
+
 	cout << list.getLength() << endl;
 
-	cout << list[1] << endl;
+	cout << list << "----------" << endl;
 	list(1);
-	cout << list[1] << endl;
+	cout << list << endl;
+
+	Lista<Korisnik> druga = list;
+
+	cout << list;
+
+	Lista<int> treca(Lista<int>());
+
+	//cout << treca;
+
+	Lista<Korisnik*> pok;
+
+	(pok += new Korisnik("marko", "sifra1234")) += new Korisnik("djina", "sifra1234");
+	cout << endl << pok;
+
+	Lista<Korisnik*> pok2 = pok;
+
+	cout << pok;
+}
+
+void testEvidencija()
+{
+	Korisnik* nikola = new Korisnik("Nikola", "sifra123");
+	Korisnik* andrija = new Korisnik("andrija", "sifra123");
+	Korisnik* jovan = new Korisnik("andrea", "sifra123");
+
+	Evidencija evidencija;
+	((evidencija += nikola) += andrija) += jovan;
+	cout << evidencija;
+	evidencija("andrija");
+	cout << evidencija;
+
+}
+
+void testMultimedija()
+{
+	Multimedija* slika = new Slika("moja slika", 10, 10, 1);
+	cout << *slika << endl;
 }
 
 int main()
@@ -52,7 +91,15 @@ int main()
 	}
 	catch (myExceptions::InvalidIndexException& p) { cout << p; }
 
+	try
+	{
+		//testEvidencija();
+	}
+	catch (myExceptions::UserAlreadyExistsException& p) { cout << p; }
+	catch (myExceptions::UserDoesntExistException& p) { cout << p; }
+	catch (myExceptions::InvalidIndexException& p) { cout << p; }
 
+	//testMultimedija();
 
 	system("pause");
 	return 0;
