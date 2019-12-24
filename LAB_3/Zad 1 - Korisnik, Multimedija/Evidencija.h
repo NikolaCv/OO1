@@ -21,6 +21,7 @@ public:
 	Korisnik operator[](const string name) const;
 	void operator()(const string name);
 	void changePassword(const string name, const string old_password, const string new_password);
+	friend ostream& operator<<(ostream& out, const Evidencija& record);
 
 private:
 	Lista<Korisnik*> list;

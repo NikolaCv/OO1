@@ -31,7 +31,10 @@ void Evidencija::operator()(const string name)
 {
 	for (int i = 0; i < list.getLength(); ++i)
 		if (list[i]->getName() == name)
+		{
 			list(i);
+			return;
+		}
 
 	throw myExceptions::UserDoesntExistException();
 }
@@ -46,4 +49,9 @@ void Evidencija::changePassword(const string name, const string old_password, co
 		}
 
 	throw myExceptions::UserDoesntExistException();
+}
+
+ostream & operator<<(ostream & out, const Evidencija & record)
+{
+	return out << record.list;
 }
