@@ -11,11 +11,15 @@ using namespace std;
 class Slika : public Multimedija
 {
 public:
-	Slika(const string name, unsigned height, unsigned width, unsigned pixel_size);
-	//string toString() const override;
+	Slika(const string& name, unsigned height, unsigned width, unsigned pixel_size);
+	string toString() const override;
+	string getDescription() const override;
+	unsigned getSize() const override;
 
 private:
+	unsigned size;
 	unsigned width, height, pixel_size;
+	string description;
 
 };
 
