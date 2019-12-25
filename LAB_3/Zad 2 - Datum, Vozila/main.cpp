@@ -1,5 +1,7 @@
 #include "myExceptions.h"
 #include "Lista.h"
+#include "Vozilo.h"
+#include "Automobil.h"
 
 #include <iostream>
 
@@ -33,7 +35,10 @@ void testLista()
 
 void testAuto()
 {
-
+	Automobil auto1("opel", Datum(28,12,2018), 1000, Automobil::LIMUZINA, 500);
+	
+	cout << auto1 << auto1.getRentPricePerDay(Datum(28, 12, 2018),true);
+	
 }
 
 int main()
@@ -44,10 +49,8 @@ int main()
 	}
 	catch (myExceptions::CurrentElementDoesntExist& p) { cout << p; }
 
-	try
-	{
+	testAuto();
 
-	}
 
 
 	system("pause");

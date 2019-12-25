@@ -24,6 +24,14 @@ namespace myExceptions
 		}
 	};
 
+	class FirstDateIsBeforeSecondException
+	{
+		friend ostream& operator<<(ostream& out, const FirstDateIsBeforeSecondException& p)
+		{
+			return out << "Oduzimanje datuma je bio negativan broj. (FirstDateIsBeforeSecondException)" << endl;
+		}
+	};
+
 }
 
 #endif

@@ -6,12 +6,6 @@ Automobil::Automobil(const string & model, const Datum & production_date, int ba
 		num_of_passengers = 2;
 	else if (vehicle_type == LIMUZINA)
 		num_of_passengers = 5;
-
-	if (true)//TODO:datum pre 2 godine
-		base_rent_price *= 1.15;
-
-	if (true)//TODO:treba vozac?
-		base_rent_price += wage;
 }
 
 int Automobil::getNumberOfPassengers() const
@@ -19,8 +13,17 @@ int Automobil::getNumberOfPassengers() const
 	return num_of_passengers;
 }
 
-int Automobil::getRentPricePerDay(const Datum & date, bool driver_needed) const
+int Automobil::getRentPricePerDay(const Datum & date, bool driver_needed)
 {
+	if (production_date - date < 730)
+		base_rent_price *= 1.15;
+
+	if (driver_needed)
+	{
+		this->driver_needed = true;
+		base_rent_price += wage;
+	}
+
 	return base_rent_price;
 }
 

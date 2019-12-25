@@ -11,6 +11,7 @@ using namespace std;
 class Datum
 {
 public:
+	Datum();
 	Datum(int day, int month, int year);
 	Datum(const Datum& day) = default;
 	Datum(Datum&& day) = default;
@@ -23,6 +24,7 @@ public:
 	friend ostream& operator<<(ostream &out, const Datum& d);
 private:
 	int day, month, year;
+	int numOfLeapYears(const Datum&) const;
 };
 
 #endif
