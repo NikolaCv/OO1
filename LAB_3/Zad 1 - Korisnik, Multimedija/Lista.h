@@ -224,7 +224,7 @@ ostream & operator<<(ostream & out, const Lista<T> & list)
 	return out;
 }
 
-//specialization for pointer types
+//specialization for pointer types-----------------------------------------------------------------------------
 
 template <class T>
 class Lista<T*>

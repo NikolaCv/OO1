@@ -8,7 +8,9 @@
 class Automobil : public Vozilo
 {
 public:
-	Automobil(const string& model, const Datum& production_date, int base_rent_price, enum type vehicle_type, int wage);
+	enum TYPE { KUPE, LIMUZINA };//zasto mora u public? ne bi trebalo da mora
+
+	Automobil(const string& model, const Datum& production_date, int base_rent_price, enum TYPE vehicle_type, int wage);//zavrsi funkciju
 	~Automobil() = default;
 
 	int getNumberOfPassengers() const override;
@@ -16,11 +18,10 @@ public:
 	virtual string toString() const override;
 
 private:
-	enum type{KUPE,LIMUZINA};
-	type vehicle_type;
+	enum TYPE{KUPE,LIMUZINA};
+	TYPE vehicle_type;
 	int wage;
 	int num_of_passengers;
-	Automobil(Automobil::type vehicle_type, int wage);
 };
 
 #endif

@@ -67,7 +67,6 @@ void testEvidencija()
 	cout << evidencija;
 	evidencija("andrija");
 	cout << evidencija;
-
 }
 
 void testMultimedija()

@@ -1,7 +1,6 @@
 #include "Automobil.h"
 
-//TODO: sredi sintaksu
-Automobil::Automobil(const string & model, const Datum & production_date, int base_rent_price, Automobil::type vehicle_type, int wage) :Vozilo(model, production_date, base_rent_price), vehicle_type(vehicle_type), wage(wage)
+Automobil::Automobil(const string & model, const Datum & production_date, int base_rent_price, TYPE vehicle_type, int wage) :Vozilo(model, production_date, base_rent_price), vehicle_type(vehicle_type), wage(wage)
 {
 	if (vehicle_type == KUPE)
 		num_of_passengers = 2;

@@ -21,7 +21,7 @@ public:
 	friend ostream& operator<<(ostream& out, const Mreza& network);
 
 private:
-	Lista<Gradska_linija*> network;
+	Lista<Gradska_linija*> network;//pokazivaci?
 };
 
 #endif

@@ -15,9 +15,11 @@ void testLista()
 	//list.getCurrentData();
 	//list.deleteCurrent();
 
+
 	cout << list << endl;
 
 	list.moveCurrentAtStart();
+	//list.deleteCurrent();
 	list.moveCurrent();
 	//list.moveCurrent();
 
@@ -28,6 +30,12 @@ void testLista()
 	cout << list << endl;
 
 }
+
+void testAuto()
+{
+
+}
+
 int main()
 {
 	try
@@ -36,6 +44,10 @@ int main()
 	}
 	catch (myExceptions::CurrentElementDoesntExist& p) { cout << p; }
 
+	try
+	{
+
+	}
 
 
 	system("pause");
