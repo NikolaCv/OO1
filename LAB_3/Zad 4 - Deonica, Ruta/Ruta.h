@@ -10,10 +10,10 @@ class Ruta
 {
 public:
 	Ruta();
-	Ruta(const Ruta& line);		//default?
-	Ruta(Ruta&& line);
-	Ruta& operator=(const Ruta& line);
-	Ruta& operator=(Ruta&& line);
+	Ruta(const Ruta& line) = default;				//default?
+	Ruta(Ruta&& line) = default;
+	Ruta& operator=(const Ruta& line) = default;
+	Ruta& operator=(Ruta&& line) = default;
 	~Ruta() = default;
 
 	double operator()(double consumption);
@@ -23,7 +23,6 @@ public:
 
 private:
 	Lista<Deonica*> sections;
-	double needed_gas;
-};
 
+};
 #endif
