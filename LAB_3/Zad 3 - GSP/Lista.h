@@ -214,8 +214,12 @@ void Lista<T>::copy(const Lista& list)
 	while (temp)
 	{
 		(*this) += temp->data;
+		if (list.current == temp)
+			current = end;
 		temp = temp->next;
 	}
+	if (list.current == nullptr)
+		current = nullptr;
 	length = list.length;
 }
 
@@ -249,20 +253,20 @@ class Lista<T*>
 {
 public:
 	Lista();
-	Lista(const Lista& list) = delete;
-	Lista(Lista&& list) = delete;
-	Lista& operator=(const Lista& list) = delete;
-	Lista& operator=(Lista&& list) = delete;
-	~Lista();//spec
+	Lista(const Lista& list);
+	Lista(Lista&& list);
+	Lista& operator=(const Lista& list);
+	Lista& operator=(Lista&& list);
+	~Lista();
 
 	int getLength() const;
-	Lista& operator+=(T* new_data);//spec
+	Lista& operator+=(T* new_data);
 	void moveCurrent() const;
 	void moveCurrentAtStart() const;
 	bool doesCurrentExist() const;
-	T* getCurrentData();//spec
-	const T* getCurrentdata() const;//spec
-	void deleteCurrent();//spec			----------TODO: ne ponavljaj se
+	T* getCurrentData();
+	const T* getCurrentdata() const;
+	void deleteCurrent();
 
 	template <class T>
 	friend ostream& operator<<(ostream & out, const Lista<T*> &list);
@@ -280,7 +284,7 @@ private:
 	mutable Node* current;
 	int length;
 
-	void del();//spec
+	void del();
 	void copy(const Lista& list);
 	void move(Lista& list);
 };
@@ -292,13 +296,13 @@ inline Lista<T*>::Lista() :start(nullptr), end(nullptr), current(nullptr), lengt
 
 
 template<class T>
-Lista<T>::Lista(const Lista & list)
+Lista<T*>::Lista(const Lista & list)
 {
 	copy(list);
 }
 
 template<class T>
-Lista<T>::Lista(Lista && list)
+Lista<T*>::Lista(Lista && list)
 {
 	move(list);
 }
@@ -407,7 +411,7 @@ inline void Lista<T*>::deleteCurrent()
 	{
 		current = current->next;
 		start = current;
-		delete start->data;
+	//	delete start->data;
 		delete start->prev;
 		start->prev = nullptr;
 	}
@@ -415,7 +419,7 @@ inline void Lista<T*>::deleteCurrent()
 	{
 		current = current->prev;
 		end = current;
-		delete end->data;
+	//	delete end->data;
 		delete end->next;
 		end->next = nullptr;
 	}
@@ -424,7 +428,7 @@ inline void Lista<T*>::deleteCurrent()
 		current->prev->next = current->next;
 		Node* temp = current->next;
 		current->next->prev = current->prev;
-		delete current->data;
+	//	delete current->data;
 		delete current;
 		current = temp;
 	}
@@ -440,7 +444,7 @@ void Lista<T*>::del()
 	while (start)
 	{
 		start = start->next;
-		delete temp->data;
+		//delete temp->data;
 		delete temp;
 		temp = start;
 	}
@@ -455,8 +459,12 @@ void Lista<T*>::copy(const Lista& list)
 	while (temp)
 	{
 		(*this) += new T(*temp->data);
+		if (list.current == temp)
+			current = end;
 		temp = temp->next;
 	}
+	if (list.current == nullptr)
+		current = nullptr;
 	length = list.length;
 }
 
