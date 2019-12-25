@@ -1,0 +1,6 @@
+gradska linija dodavanje liste, i operator&
+promena lista da ne prave duboku kopiju, tj. bez specijalizacije template za 2. i 3. zad
+prva moze da ostane? ali bi valjalo da se ne koristi jer ce da komplikuje bez potrebe
+
+datum operator- i exception za los format datuma
+i ceo poslednji da se definisu funkcije i testira
