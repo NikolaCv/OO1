@@ -19,6 +19,11 @@ string Stajaliste::getName() const
 	return name;
 }
 
+void Stajaliste::addLine(Gradska_linija * line)
+{
+	lines += line;
+}
+
 bool operator==(const Stajaliste & station1, const Stajaliste & station2)
 {
 	return (station1.tag == station2.tag) ? true : false;
