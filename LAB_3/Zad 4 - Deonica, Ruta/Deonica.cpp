@@ -4,14 +4,14 @@ Deonica::Deonica(Mesto * start_place, Mesto * end_place, KATEGORIJA_PUTA categor
 {
 }
 
-Mesto * Deonica::getStartPlace() const
+const Mesto& Deonica::getStartPlace() const
 {
-	return start_place;
+	return *start_place;
 }
 
-Mesto * Deonica::getEndPlace() const
+const Mesto& Deonica::getEndPlace() const
 {
-	return end_place;
+	return *end_place;
 }
 
 Deonica::KATEGORIJA_PUTA Deonica::getCategory() const

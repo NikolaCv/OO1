@@ -16,8 +16,8 @@ public:
 	Deonica& operator=(Deonica&& section) = default;
 	~Deonica() = default;
 
-	Mesto* getStartPlace() const;
-	Mesto* getEndPlace() const;
+	const Mesto& getStartPlace() const;
+	const Mesto& getEndPlace() const;
 	KATEGORIJA_PUTA getCategory() const;
 	double operator~() const;
 	double operator()(KATEGORIJA_VOZILA category);

@@ -4,6 +4,12 @@ Stajaliste::Stajaliste(int tag, const string & name, int zone):tag(tag),zone(zon
 {
 }
 
+Stajaliste::~Stajaliste()
+{
+	for (lines.moveCurrentAtStart(); lines.doesCurrentExist(); lines.moveCurrent())
+		lines.getCurrentData()->removeStation(*this);
+}
+
 int Stajaliste::getTag() const
 {
 	return tag;

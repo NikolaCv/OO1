@@ -14,16 +14,16 @@ Datum::Datum(int day, int month, int year) :day(day), month(month), year(year)
 
 bool Datum::isLeapYear() const
 {
-	return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) ? true : false;
+	return (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) && year != 0;
 }
 
 int Datum::operator[](const string & s) const
 {
-	if (s != "dan" && s != "mesec" && s != "godina") throw myExceptions::InvalidDateIndexException();
-	
 	if (s == "dan") return day;
 	if (s == "mesec") return month;
 	if (s == "godina") return year;
+
+	throw myExceptions::InvalidDateIndexException();
 }
 
 bool operator<(const Datum& date1, const Datum& date2)

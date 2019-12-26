@@ -3,6 +3,7 @@
 
 #include "myExceptions.h"
 #include "Lista.h"
+#include "Gradska_linija.h"
 
 class Gradska_linija;
 
@@ -14,7 +15,7 @@ public:
 	Stajaliste(Stajaliste&& station) = default;
 	Stajaliste& operator=(const Stajaliste& station) = default;
 	Stajaliste& operator=(Stajaliste&& station) = default;
-	~Stajaliste() = default;
+	~Stajaliste();
 
 	int getTag() const;
 	int getZone() const;

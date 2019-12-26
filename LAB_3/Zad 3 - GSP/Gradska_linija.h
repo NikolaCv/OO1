@@ -16,7 +16,8 @@ public:
 	Gradska_linija& operator=(Gradska_linija&& line) = default;
 	~Gradska_linija() = default;
 
-	friend int operator&(const Gradska_linija& line1, const Gradska_linija& line2);//TODO
+	void removeStation(const Stajaliste& station);
+	friend int operator&(const Gradska_linija& line1, const Gradska_linija& line2);
 
 	friend ostream& operator<<(ostream& out, const Gradska_linija& line);
 
