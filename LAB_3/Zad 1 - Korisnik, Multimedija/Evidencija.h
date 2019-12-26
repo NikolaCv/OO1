@@ -16,15 +16,15 @@ public:
 	Evidencija& operator=(Evidencija&& record) = delete;
 	~Evidencija() = default;
 
-	Evidencija& operator+=(Korisnik* user);
-	Korisnik* operator[](const string& name);
-	Korisnik operator[](const string& name) const;
+	Evidencija& operator+=(const Korisnik& user);
+	Korisnik& operator[](const string& name);
+	const Korisnik& operator[](const string& name) const;
 	void operator()(const string& name);
 	void changePassword(const string& name, const string& old_password, const string& new_password);
 	friend ostream& operator<<(ostream& out, const Evidencija& record);
 
 private:
-	Lista<Korisnik*> list;
+	Lista<Korisnik> list;
 
 };
 

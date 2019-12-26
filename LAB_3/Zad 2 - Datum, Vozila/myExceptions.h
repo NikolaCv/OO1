@@ -24,6 +24,14 @@ namespace myExceptions
 		}
 	};
 
+	class InvalidDateFormatException
+	{
+		friend ostream& operator<<(ostream& out, const InvalidDateFormatException& p)
+		{
+			return out << "Los format datuma. (InvalidDateFormatException)" << endl;
+		}
+	};
+
 	class FirstDateIsBeforeSecondException
 	{
 		friend ostream& operator<<(ostream& out, const FirstDateIsBeforeSecondException& p)

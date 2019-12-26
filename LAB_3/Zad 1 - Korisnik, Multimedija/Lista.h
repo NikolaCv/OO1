@@ -61,15 +61,13 @@ Lista<T>::Lista(Lista && list)
 template<class T>
 Lista<T> & Lista<T>::operator=(const Lista & list)
 {
+	if (this != &list)
 	{
-		if (this != &list)
-		{
-			del();
-			copy(list);
-		}
-
-		return *this;
+		del();
+		copy(list);
 	}
+
+	return *this;
 }
 
 template<class T>
@@ -78,7 +76,7 @@ Lista<T> & Lista<T>::operator=(Lista && list)
 	if (this != &list)
 	{
 		del();
-		copy(list);
+		move(list);
 	}
 
 	return *this;
@@ -225,7 +223,7 @@ ostream & operator<<(ostream & out, const Lista<T> & list)
 }
 
 //specialization for pointer types-----------------------------------------------------------------------------
-
+/*
 template <class T>
 class Lista<T*>
 {
@@ -445,5 +443,5 @@ ostream & operator<<(ostream & out, const Lista<T*> & list)
 		out << *list[i] << endl;
 	return out;
 }
-
+*/
 #endif

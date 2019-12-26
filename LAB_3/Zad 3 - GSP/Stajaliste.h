@@ -19,6 +19,7 @@ public:
 	int getTag() const;
 	int getZone() const;
 	string getName() const;
+
 	friend bool operator==(const Stajaliste& station1, const Stajaliste& station2);
 	friend bool operator!=(const Stajaliste& station1, const Stajaliste& station2);
 	void addLine(Gradska_linija* line);
@@ -28,7 +29,7 @@ public:
 private:
 	int tag, zone;
 	string name;
-	Lista<Gradska_linija*> lines;
+	Lista<Gradska_linija*> lines;//TODO
 
 };
 

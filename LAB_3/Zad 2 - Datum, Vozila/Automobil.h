@@ -8,7 +8,7 @@
 class Automobil : public Vozilo
 {
 public:
-	enum TYPE { KUPE, LIMUZINA };//zasto mora u public? ne bi trebalo da mora
+	enum TYPE { KUPE, LIMUZINA };
 
 	Automobil(const string& model, const Datum& production_date, int base_rent_price, enum TYPE vehicle_type, int wage);
 	~Automobil() = default;

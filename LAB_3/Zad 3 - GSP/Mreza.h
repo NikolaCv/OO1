@@ -11,17 +11,17 @@ class Mreza
 public:
 	Mreza() = default;
 	Mreza(const Mreza& network) = default;
-	Mreza(Mreza&& network) = default;				//moze default???
+	Mreza(Mreza&& network) = default;
 	Mreza& operator=(const Mreza& network) = default;
 	Mreza& operator=(Mreza&& network) = default;
 	~Mreza() = default;
 
-	Mreza& operator+=(Gradska_linija* line);
+	Mreza& operator+=(const Gradska_linija& line);
 
 	friend ostream& operator<<(ostream& out, const Mreza& network);
 
 private:
-	Lista<Gradska_linija*> network;//pokazivaci?
+	Lista<Gradska_linija> network;//pokazivaci?
 };
 
 #endif

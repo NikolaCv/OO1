@@ -10,12 +10,13 @@ class Ruta
 {
 public:
 	Ruta();
-	Ruta(const Ruta& line) = default;				//default?
+	Ruta(const Ruta& line) = default;
 	Ruta(Ruta&& line) = default;
 	Ruta& operator=(const Ruta& line) = default;
 	Ruta& operator=(Ruta&& line) = default;
 	~Ruta() = default;
 
+	Ruta& operator+=(Deonica* section);
 	double operator()(double consumption);
 	double operator()(Deonica::KATEGORIJA_VOZILA category);
 

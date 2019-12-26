@@ -15,7 +15,13 @@ int Automobil::getNumberOfPassengers() const
 
 int Automobil::getRentPricePerDay(const Datum & date, bool driver_needed)
 {
-	if (production_date - date < 730)
+	Datum new_date;
+	if (production_date.isLeapYear() && production_date["mesec"] == 2 && production_date["dan"] == 29)
+		new_date = Datum(1, 3, production_date["godina"] + 2);
+	else
+		new_date = Datum(production_date["dan"], production_date["mesec"], production_date["godina"] + 2);
+	
+	if (!(new_date < date))	//new_date = production + 2 years // ako je manje znaci da je proslo 2 godine
 		base_rent_price *= 1.15;
 
 	if (driver_needed)

@@ -15,7 +15,6 @@ namespace myExceptions
 			return out << "Ne postoji trenutni element. (CurrentElementDoesntExist)" << endl;
 		}
 	};
-
 }
 
 #endif

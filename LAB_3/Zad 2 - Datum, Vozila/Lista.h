@@ -24,7 +24,7 @@ public:
 	void moveCurrentAtStart() const;
 	bool doesCurrentExist() const;
 	T& getCurrentData();
-	const T& getCurrentdata() const;
+	const T& getCurrentData() const;
 	void deleteCurrent();
 
 	template <class T>
@@ -150,7 +150,7 @@ inline T & Lista<T>::getCurrentData()
 }
 
 template<class T>
-inline const T & Lista<T>::getCurrentdata() const
+inline const T & Lista<T>::getCurrentData() const
 {
 	if (current == nullptr) throw myExceptions::CurrentElementDoesntExist();
 
@@ -242,8 +242,8 @@ ostream & operator<<(ostream & out, const Lista<T> & list)
 	return out;
 }
 
-//specialization for pointer types
-
+//specialization for pointer types--------------------------------------------------------------------------------
+/*
 template <class T>
 class Lista<T*>
 {
@@ -419,5 +419,6 @@ ostream & operator<<(ostream & out, const Lista<T*> & list)
 	}
 	return out;
 }
+*/
 
 #endif

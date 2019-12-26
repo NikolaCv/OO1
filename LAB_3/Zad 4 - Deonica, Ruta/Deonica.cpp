@@ -4,11 +4,6 @@ Deonica::Deonica(Mesto * start_place, Mesto * end_place, KATEGORIJA_PUTA categor
 {
 }
 
-
-Deonica::~Deonica()
-{
-}
-
 Mesto * Deonica::getStartPlace() const
 {
 	return start_place;
@@ -29,13 +24,17 @@ double Deonica::operator~() const
 	return *start_place - *end_place;
 }
 
-double Deonica::operator()(KATEGORIJA_VOZILA category)
+double Deonica::operator()(KATEGORIJA_VOZILA category_vehicle)
 {
-	if (category == LAKO) return ~(*this) * 12;
-	if(category == TESKO) return ~(*this) * 22;
+	if (category == AUTOPUT)
+	{
+		if (category_vehicle == LAKO) return ~(*this) * 12;
+		if (category_vehicle == TESKO) return ~(*this) * 22;
+	}
+	else return 0;
 }
 
 ostream & operator<<(ostream & out, const Deonica & section)
 {
-	return out << "[" << *section.start_place << " -> " << *section.end_place << "]" << ~section;
+	return out << "[" << *section.start_place << " -> " << *section.end_place << "]" << " - " << ~section << "km";
 }

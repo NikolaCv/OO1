@@ -33,11 +33,18 @@ void testLista()
 
 }
 
+void testDatum()
+{
+	Datum prvi(1, 1, 2020);
+	cout << prvi.isLeapYear() << endl;
+	cout << prvi["godina"] << endl;
+}
+
 void testAuto()
 {
 	Automobil auto1("opel", Datum(28,12,2018), 1000, Automobil::LIMUZINA, 500);
 	
-	cout << auto1 << auto1.getRentPricePerDay(Datum(28, 12, 2018),true);
+	cout << auto1 << auto1.getRentPricePerDay(Datum(28, 12, 2020), false) << endl;
 	
 }
 
@@ -48,6 +55,15 @@ int main()
 		testLista();
 	}
 	catch (myExceptions::CurrentElementDoesntExist& p) { cout << p; }
+
+	try
+	{
+		testDatum();
+	}
+	catch (myExceptions::InvalidDateFormatException& p) { cout << p; }
+	catch (myExceptions::InvalidDateIndexException& p) { cout << p; }
+	catch (myExceptions::FirstDateIsBeforeSecondException& p) { cout << p; }
+
 
 	testAuto();
 

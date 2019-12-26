@@ -1,13 +1,13 @@
 #include "Mreza.h"
 
 
-Mreza & Mreza::operator+=(Gradska_linija * line)
+Mreza & Mreza::operator+=(const Gradska_linija& line)
 {
 	network += line;
 	return *this;
 }
 
-ostream & operator<<(ostream & out, const Mreza & network)
+ostream & operator<<(ostream & out, const Mreza & net)
 {
-	return out << network;
+	return out << net.network;
 }

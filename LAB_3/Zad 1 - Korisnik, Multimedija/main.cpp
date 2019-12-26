@@ -46,24 +46,20 @@ void testLista()
 
 	//cout << treca;
 
-	Lista<Korisnik*> pok;
+	Lista<Korisnik> lista_kor;
 
-	(pok += new Korisnik("marko", "sifra1234")) += new Korisnik("djina", "sifra1234");
-	cout << endl << pok;
+	(lista_kor += Korisnik("marko", "sifra1234")) += Korisnik("djina", "sifra1234");
+	cout << endl << lista_kor;
 
-	Lista<Korisnik*> pok2 = pok;
+	Lista<Korisnik> pok2 = lista_kor;
 
-	cout << pok;
+	cout << pok2;
 }
 
 void testEvidencija()
 {
-	Korisnik* nikola = new Korisnik("Nikola", "sifra123");
-	Korisnik* andrija = new Korisnik("andrija", "sifra123");
-	Korisnik* jovan = new Korisnik("andrea", "sifra123");
-
 	Evidencija evidencija;
-	((evidencija += nikola) += andrija) += jovan;
+	((evidencija += Korisnik("Nikola", "sifra123")) += Korisnik("andrija", "sifra123")) += Korisnik("andrea", "sifra123");
 	cout << evidencija;
 	evidencija("andrija");
 	cout << evidencija;
@@ -86,19 +82,19 @@ int main()
 
 	try
 	{
-		testLista();
+		//testLista();
 	}
 	catch (myExceptions::InvalidIndexException& p) { cout << p; }
 
 	try
 	{
-		//testEvidencija();
+		testEvidencija();
 	}
 	catch (myExceptions::UserAlreadyExistsException& p) { cout << p; }
 	catch (myExceptions::UserDoesntExistException& p) { cout << p; }
 	catch (myExceptions::InvalidIndexException& p) { cout << p; }
 
-	//testMultimedija();
+	testMultimedija();
 
 	system("pause");
 	return 0;

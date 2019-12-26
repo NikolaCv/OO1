@@ -68,15 +68,13 @@ Lista<T>::Lista(Lista && list)
 template<class T>
 Lista<T> & Lista<T>::operator=(const Lista & list)
 {
+	if (this != &list)
 	{
-		if (this != &list)
-		{
-			del();
-			copy(list);
-		}
-
-		return *this;
+		del();
+		copy(list);
 	}
+
+	return *this;
 }
 
 template<class T>
@@ -85,7 +83,7 @@ Lista<T> & Lista<T>::operator=(Lista && list)
 	if (this != &list)
 	{
 		del();
-		copy(list);
+		move(list);
 	}
 
 	return *this;
@@ -374,10 +372,7 @@ inline void Lista<T*>::moveCurrent() const
 template<class T>
 inline void Lista<T*>::moveCurrentAtStart() const
 {
-	if (current == nullptr) throw myExceptions::CurrentElementDoesntExist();
-
 	current = start;
-
 }
 
 template<class T>

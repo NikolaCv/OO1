@@ -6,13 +6,19 @@ Ruta::Ruta()
 {
 }
 
+Ruta & Ruta::operator+=(Deonica * section)
+{
+	sections += section;
+	return *this;
+}
+
 double Ruta::operator()(double consumption)
 {
 	double s = 0;
 	sections.moveCurrentAtStart();
 	while (sections.doesCurrentExist())
 	{
-		s += ~(*sections.getCurrentData());
+		s += ~(*(sections.getCurrentData()));
 		sections.moveCurrent();
 	}
 	
@@ -23,21 +29,14 @@ double Ruta::operator()(Deonica::KATEGORIJA_VOZILA category)
 {
 	double s = 0;
 	sections.moveCurrentAtStart();
+
 	while (sections.doesCurrentExist())
 	{
-		if((sections.getCurrentData())->getCategory() == Deonica::LAKO)
-			s += ~(*sections.getCurrentData()) * 12;
-		else if ((sections.getCurrentData())->getCategory() == Deonica::TESKO)
-			s += ~(*sections.getCurrentData()) * 22;
+		s += (*sections.getCurrentData())(category);
 		sections.moveCurrent();
 	}
 
 	return s;
-}
-
-
-Ruta::~Ruta()
-{
 }
 
 ostream & operator<<(ostream & out, const Ruta & route)

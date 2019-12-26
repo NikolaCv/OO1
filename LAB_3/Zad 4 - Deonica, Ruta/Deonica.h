@@ -4,17 +4,17 @@
 #include "myExceptions.h"
 #include "Mesto.h"
 
-class Deonica//TODO
+class Deonica
 {
 public:
 	enum KATEGORIJA_PUTA { MAGISTRALNI, AUTOPUT };
 	enum KATEGORIJA_VOZILA { LAKO, TESKO };
 	Deonica(Mesto* start_place, Mesto* end_place, KATEGORIJA_PUTA category);
-	Deonica(const Deonica& section);
-	Deonica(Deonica&& section);					//default? ili delete? jer necemo da pravimo novo mesto???
-	Deonica& operator=(const Deonica& section);	//ako brisemo deonicu necemo da obrisemo i mesto, jer mozda mesto pripada drugim deonicama?
-	Deonica& operator=(Deonica&& section);
-	~Deonica();
+	Deonica(const Deonica& section) = default;
+	Deonica(Deonica&& section) = default;					//default jer treba plitka kopija
+	Deonica& operator=(const Deonica& section) = default;	//ako brisemo deonicu necemo da obrisemo i mesto, jer mozda mesto pripada drugim deonicama
+	Deonica& operator=(Deonica&& section) = default;
+	~Deonica() = default;
 
 	Mesto* getStartPlace() const;
 	Mesto* getEndPlace() const;

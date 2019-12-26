@@ -2,6 +2,8 @@
 #define MESTO_H
 
 #include "myExceptions.h"
+#include <math.h>
+#define M_PI 3.14159265358979323846
 
 class Mesto
 {
@@ -17,7 +19,7 @@ public:
 	double getLength() const;
 	string getName() const;
 
-	friend double operator-(const Mesto& place1, const Mesto& place2);//TODO
+	friend double operator-(const Mesto& place1, const Mesto& place2);
 	friend ostream& operator<<(ostream& out, const Mesto& place);
 
 private:
