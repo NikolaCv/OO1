@@ -10,10 +10,18 @@ Gradska_linija::Gradska_linija(const string & text_tag, Lista<Stajaliste*>& list
 	}
 }
 
+Gradska_linija::~Gradska_linija()
+{
+	for (stations.moveCurrentAtStart(); stations.doesCurrentExist(); stations.moveCurrent())
+	{
+		stations.getCurrentData()->removeLine(this);
+	}
+}
+
 void Gradska_linija::removeStation(const Stajaliste & station)
 {
 	for (stations.moveCurrentAtStart(); stations.doesCurrentExist(); stations.moveCurrent())
-		if (stations.getCurrentData() == &station)
+		if (*stations.getCurrentData() == station)
 		{
 			stations.deleteCurrent();
 			break;

@@ -15,13 +15,16 @@ public:
 
 	int getNumberOfPassengers() const override;
 	int getRentPricePerDay(const Datum& date, bool driver_needed) override;
-	virtual string toString() const override;
+	string toString() const override;
+	Automobil* copy() const override;
+	TYPE getVehicleType() const;
+	int getWage() const;
 
 private:
 	TYPE vehicle_type;
 	int wage;
 	int num_of_passengers;
-	bool driver_needed = false;
+
 };
 
 #endif

@@ -8,12 +8,23 @@ using namespace std;
 
 namespace myExceptions
 {
-	class CurrentElementDoesntExist
+	class Exception
 	{
-		friend ostream& operator<<(ostream& out, const CurrentElementDoesntExist& p)
+		virtual string text() const
 		{
-			return out << "Ne postoji trenutni element. (CurrentElementDoesntExist)" << endl;
+			return "Exception.";
+		};
+		friend ostream& operator<<(ostream& out, const Exception& p)
+		{
+			return out << p.text() << endl;
 		}
+	};
+	class CurrentElementDoesntExist:public Exception
+	{
+		virtual string text() const
+		{
+			return "Ne postoji trenutni element. (CurrentElementDoesntExist)";
+		};
 	};
 }
 

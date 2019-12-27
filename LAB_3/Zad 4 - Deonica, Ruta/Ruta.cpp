@@ -39,7 +39,14 @@ double Ruta::operator()(Deonica::KATEGORIJA_VOZILA category)
 	return s;
 }
 
+const Lista<Deonica*>& Ruta::getSections() const
+{
+	return sections;
+}
+
 ostream & operator<<(ostream & out, const Ruta & route)
 {
-	return out << route.sections;
+	for (route.sections.moveCurrentAtStart(); route.sections.doesCurrentExist(); route.sections.moveCurrent())
+		out << *route.sections.getCurrentData() << endl;
+	return out;
 }

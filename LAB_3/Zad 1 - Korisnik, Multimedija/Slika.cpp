@@ -16,6 +16,11 @@ unsigned Slika::getSize() const
 	return size;
 }
 
+Slika * Slika::copy() const
+{
+	return new Slika(*this);
+}
+
 string Slika::toString() const
 {
 	return description;

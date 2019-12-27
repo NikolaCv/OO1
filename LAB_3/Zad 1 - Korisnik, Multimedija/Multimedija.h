@@ -22,6 +22,7 @@ public:
 	virtual string getDescription() const = 0;
 	virtual string toString() const = 0;
 	friend ostream& operator<<(ostream & out, const Multimedija& multimedia);
+	virtual Multimedija* copy() const = 0;
 
 protected:
 	string name;

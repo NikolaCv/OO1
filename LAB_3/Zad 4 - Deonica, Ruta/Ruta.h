@@ -19,6 +19,7 @@ public:
 	Ruta& operator+=(Deonica* section);
 	double operator()(double consumption);
 	double operator()(Deonica::KATEGORIJA_VOZILA category);
+	const Lista<Deonica*>& getSections() const;
 
 	friend ostream& operator<<(ostream& out, const Ruta& route);
 

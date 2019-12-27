@@ -17,16 +17,19 @@ public:
 	Vozilo& operator=(Vozilo&& vehicle) = delete;
 	~Vozilo() = default;
 
+	int getBaseRentPrice() const;
+	string getModelName() const;
+	const Datum& getProductionDate() const;
+
 	virtual int getNumberOfPassengers() const = 0;
 	virtual int getRentPricePerDay(const Datum& date, bool driver_needed) = 0;
 	virtual string toString() const = 0;
 	friend ostream& operator<<(ostream& out, const Vozilo& vehicle);
+	virtual Vozilo* copy() const = 0;
 
 protected:
 	int base_rent_price;
 	Datum production_date;
-
-private:
 	string model_name;
 
 };

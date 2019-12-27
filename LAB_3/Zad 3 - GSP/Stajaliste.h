@@ -3,7 +3,6 @@
 
 #include "myExceptions.h"
 #include "Lista.h"
-#include "Gradska_linija.h"
 
 class Gradska_linija;
 
@@ -20,6 +19,7 @@ public:
 	int getTag() const;
 	int getZone() const;
 	string getName() const;
+	void removeLine(Gradska_linija* line);
 
 	friend bool operator==(const Stajaliste& station1, const Stajaliste& station2);
 	friend bool operator!=(const Stajaliste& station1, const Stajaliste& station2);
@@ -30,7 +30,7 @@ public:
 private:
 	int tag, zone;
 	string name;
-	Lista<Gradska_linija*> lines;//TODO
+	Lista<Gradska_linija*> lines;
 
 };
 

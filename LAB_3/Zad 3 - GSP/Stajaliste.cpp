@@ -1,4 +1,5 @@
 #include "Stajaliste.h"
+#include "Gradska_linija.h"
 
 Stajaliste::Stajaliste(int tag, const string & name, int zone):tag(tag),zone(zone),name(name)
 {
@@ -23,6 +24,16 @@ int Stajaliste::getZone() const
 string Stajaliste::getName() const
 {
 	return name;
+}
+
+void Stajaliste::removeLine(Gradska_linija * line)
+{
+	for(lines.moveCurrentAtStart(); lines.doesCurrentExist(); lines.moveCurrent())
+		if (lines.getCurrentData() == line)
+		{
+			lines.deleteCurrent();
+			return;
+		}
 }
 
 void Stajaliste::addLine(Gradska_linija * line)

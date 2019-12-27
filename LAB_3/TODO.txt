@@ -1,4 +1,0 @@
-datum operator- i exceptioni za invalidne datume
-
-sta radimo ako obrisemo stajaliste?
-operator&

@@ -14,7 +14,7 @@ public:
 	Gradska_linija(Gradska_linija&& line) = default;
 	Gradska_linija& operator=(const Gradska_linija& line) = default;
 	Gradska_linija& operator=(Gradska_linija&& line) = default;
-	~Gradska_linija() = default;
+	~Gradska_linija();
 
 	void removeStation(const Stajaliste& station);
 	friend int operator&(const Gradska_linija& line1, const Gradska_linija& line2);
@@ -23,7 +23,8 @@ public:
 
 private:
 	string text_tag;
-	Lista<Stajaliste*> stations;
+	Lista<Stajaliste*> stations;//pokazivac ili referenca?
+
 };
 
 #endif

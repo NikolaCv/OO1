@@ -1,7 +1,11 @@
 #include "Mreza.h"
 
 
-Mreza & Mreza::operator+=(const Gradska_linija& line)
+Mreza::Mreza()
+{
+}
+
+Mreza & Mreza::operator+=(Gradska_linija& line)
 {
 	network += line;
 	return *this;

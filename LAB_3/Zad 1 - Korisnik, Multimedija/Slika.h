@@ -15,6 +15,7 @@ public:
 	string toString() const override;
 	string getDescription() const override;
 	unsigned getSize() const override;
+	Slika* copy() const override;
 
 private:
 	unsigned size;

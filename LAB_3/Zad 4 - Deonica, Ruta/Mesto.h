@@ -24,7 +24,8 @@ public:
 
 private:
 	string name;
-	double width, length;
+	double width, length;//width=longitude; length=latitude
+
 };
 
 #endif

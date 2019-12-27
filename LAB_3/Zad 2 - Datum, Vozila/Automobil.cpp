@@ -25,10 +25,7 @@ int Automobil::getRentPricePerDay(const Datum & date, bool driver_needed)
 		base_rent_price *= 1.15;
 
 	if (driver_needed)
-	{
-		this->driver_needed = true;
 		base_rent_price += wage;
-	}
 
 	return base_rent_price;
 }
@@ -36,4 +33,23 @@ int Automobil::getRentPricePerDay(const Datum & date, bool driver_needed)
 string Automobil::toString() const
 {
 	return (vehicle_type == KUPE) ? "- KUPE" : "- LIMUZINA";
+}
+
+Automobil * Automobil::copy() const
+{
+	return new Automobil(this->model_name,
+						this->production_date,
+						this->base_rent_price,
+						this->vehicle_type,
+						this->wage);
+}
+
+Automobil::TYPE Automobil::getVehicleType() const
+{
+	return vehicle_type;
+}
+
+int Automobil::getWage() const
+{
+	return wage;
 }

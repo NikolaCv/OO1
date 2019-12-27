@@ -7,6 +7,93 @@
 #include <iostream>
 
 using namespace std;
+//second set of test examples
+/*
+void test_Lista() {
+	try {
+		Lista<int> list;
+		list += 3;
+		list += 4;
+		list += 5;
+		list += 7;
+		list += 8;
+		std::cout << list << "******" << std::endl;
+		std::cout << list.getLength() << std::endl;
+		std::cout << list.doesCurrentExist() << std::endl;
+		//++list;
+		//list.getCurrentData();
+		//list.removeCurrent();
+		//list.next();
+		list.moveCurrentAtStart();
+		std::cout << list.getCurrentData() << std::endl;
+		list.moveCurrent();
+		std::cout << list.getCurrentData() << std::endl;
+		list.deleteCurrent();
+		list.moveCurrentAtStart();
+		std::cout << "******\n" << list << "******" << std::endl;
+		list.deleteCurrent();
+		list += 6;
+		list.moveCurrentAtStart();
+		list.moveCurrent();	
+		list.moveCurrent();
+		Lista<int> kopija(list);
+		list.deleteCurrent();
+		std::cout << list << "******" << std::endl;
+		std::cout << kopija << "******" << std::endl;
+		std::cout << kopija.getCurrentData() << std::endl;
+	}
+	catch (const myExceptions::Exception & e) {
+		std::cout << e << std::endl;
+	}
+}
+
+void test_Mesto() {
+	Mesto bg("Beograd", 44.7866, 20.4489);
+	Mesto nis("Nis", 43.320902, 21.895759);
+	std::cout << bg.getName() << std::endl;
+	std::cout << bg.getWidth() << " " << bg.getLength() << std::endl;
+	std::cout << bg.getWidth() << " " << bg.getLength() << std::endl;
+	std::cout << nis << std::endl;
+	std::cout << bg - nis << std::endl;
+}
+
+void test_Deonica() {
+	Mesto bg("Beograd", 20.457273, 44.787197);
+	Mesto nis("Nis", 21.895759, 43.320902);
+	Mesto sabac("Sabac", 19.6908, 44.7489);
+	Deonica e75(&bg, &nis, Deonica::AUTOPUT);
+	Deonica bgsa(&bg, &sabac, Deonica::MAGISTRALNI);
+	std::cout << e75 << std::endl;
+	std::cout << bgsa << std::endl;
+	std::cout << e75(Deonica::TESKO) << std::endl;
+	std::cout << e75(Deonica::LAKO) << std::endl;
+	std::cout << bgsa(Deonica::TESKO) << std::endl;
+}
+
+void test_Ruta() {
+	Mesto bg("Beograd", 20.457273, 44.787197);
+	Mesto nis("Nis", 21.895759, 43.320902);
+	Mesto sabac("Sabac", 19.6908, 44.7489);
+	Deonica e75(&bg, &nis, Deonica::AUTOPUT);
+	Deonica bgsa(&bg, &sabac, Deonica::MAGISTRALNI);
+	Ruta ruta;
+	ruta += &e75;
+	ruta += &bgsa;
+	std::cout << ruta;
+	std::cout << ruta(1) << std::endl;
+	std::cout << ruta(6.5) << std::endl;
+	std::cout << ruta(Deonica::LAKO) << std::endl;
+}
+
+int main() {
+	test_Lista();
+	test_Mesto();
+	test_Deonica();
+	test_Ruta();
+	system("pause");
+	return 0;
+}*/
+
 
 void testLista()
 {
@@ -104,17 +191,25 @@ int main()
 	{
 		testLista();
 	}
-	catch (myExceptions::CurrentElementDoesntExist& p) { cout << p; }
+	catch (myExceptions::Exception& p) { cout << p; }
 
-	testMesto();
+	try
+	{
+		testMesto();
+	}
+	catch (myExceptions::Exception& p) { cout << p; }
 
-	testDeonica();
+	try
+	{
+		testDeonica();
+	}
+	catch (myExceptions::Exception& p) { cout << p; }
 
 	try
 	{
 		testRuta();
 	}
-	catch (myExceptions::CurrentElementDoesntExist& p) { cout << p; }
+	catch (myExceptions::Exception& p) { cout << p; }
 
 	
 

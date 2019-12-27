@@ -8,36 +8,48 @@ using namespace std;
 
 namespace myExceptions
 {
-	class CurrentElementDoesntExist
+	class Exception
 	{
-		friend ostream& operator<<(ostream& out, const CurrentElementDoesntExist& p)
+		virtual string text() const
 		{
-			return out << "Ne postoji trenutni element. (CurrentElementDoesntExist)" << endl;
+			return "Exception.";
+		};
+		friend ostream& operator<<(ostream& out, const Exception& p)
+		{
+			return out << p.text() << endl;
 		}
 	};
 
-	class InvalidDateIndexException
+	class CurrentElementDoesntExist:public Exception
 	{
-		friend ostream& operator<<(ostream& out, const InvalidDateIndexException& p)
+		virtual string text() const override
 		{
-			return out << "Nepostojeci indeks za datum. (InvalidDateIndexException)" << endl;
-		}
+			return "Ne postoji trenutni element. (CurrentElementDoesntExist)";
+		};
 	};
 
-	class InvalidDateFormatException
+	class InvalidDateIndexException :public Exception
 	{
-		friend ostream& operator<<(ostream& out, const InvalidDateFormatException& p)
+		virtual string text() const override
 		{
-			return out << "Los format datuma. (InvalidDateFormatException)" << endl;
-		}
+			return "Nepostojeci indeks za datum. (InvalidDateIndexException)";
+		};
 	};
 
-	class FirstDateIsBeforeSecondException
+	class InvalidDateFormatException :public Exception
 	{
-		friend ostream& operator<<(ostream& out, const FirstDateIsBeforeSecondException& p)
+		virtual string text() const override
 		{
-			return out << "Oduzimanje datuma je bio negativan broj. (FirstDateIsBeforeSecondException)" << endl;
-		}
+			return "Los format datuma. (InvalidDateFormatException)";
+		};
+	};
+
+	class FirstDateIsBeforeSecondException :public Exception
+	{
+		virtual string text() const override
+		{
+			return "Oduzimanje datuma je bio negativan broj. (FirstDateIsBeforeSecondException)";
+		};
 	};
 
 }

@@ -2,6 +2,7 @@
 
 Mesto::Mesto(const string & name, double width, double length):name(name),width(width),length(length)
 {
+	if (length < 0 || length>90 || width < -180 || width>180) throw myExceptions::InvalidLongitudeOrLatitudeException();
 }
 
 double Mesto::getWidth() const

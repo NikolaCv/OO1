@@ -8,41 +8,53 @@ using namespace std;
 
 namespace myExceptions
 {
-	class BadPassFormatException
+	class Exception
 	{
-		friend ostream& operator<<(ostream& out, const BadPassFormatException& p)
+		virtual string text() const
 		{
-			return out << "Lozinka nije odgovarajuceg formata. (BadPassFormatException)" << endl;
+			return "Exception.";
+		};
+		friend ostream& operator<<(ostream& out, const Exception& p)
+		{
+			return out << p.text() << endl;
 		}
 	};
-	class IncorrectPasswordException
+	class BadPassFormatException: public Exception
 	{
-		friend ostream& operator<<(ostream& out, const IncorrectPasswordException& p)
+		string text() const override
 		{
-			return out << "Pogresna lozinka. (IncorrectPasswordException)" << endl;
+			return "Lozinka nije odgovarajuceg formata. (BadPassFormatException)";
+		}
+
+	};
+	class IncorrectPasswordException : public Exception
+	{
+		string text() const override
+		{
+			return "Pogresna lozinka. (IncorrectPasswordException)";
 		}
 	};
 
-	class InvalidIndexException
+	class InvalidIndexException : public Exception
 	{
-		friend ostream& operator<<(ostream& out, const InvalidIndexException& p)
+		string text() const override
 		{
-			return out << "Ne postoji podatak na zadatoj poziciji. (InvalidIndexException)" << endl;
+			return "Ne postoji podatak na zadatoj poziciji. (InvalidIndexException)";
 		}
 	};
 
-	class UserAlreadyExistsException
+	class UserAlreadyExistsException : public Exception
 	{
-		friend ostream& operator<<(ostream& out, const UserAlreadyExistsException& p)
+		string text() const override
 		{
-			return out << "Korisnik vec postoji u evidenciji. (UserAlreadyExistsException)" << endl;
+			return "Korisnik vec postoji u evidenciji. (UserAlreadyExistsException)";
 		}
 	};
-	class UserDoesntExistException
+	class UserDoesntExistException : public Exception
 	{
-		friend ostream& operator<<(ostream& out, const UserDoesntExistException& p)
+		string text() const override
 		{
-			return out << "Korisnik ne postoji u evidenciji. (UserDoesntExistException)" << endl;
+			return "Korisnik ne postoji u evidenciji. (UserDoesntExistException)";
 		}
 	};
 }
