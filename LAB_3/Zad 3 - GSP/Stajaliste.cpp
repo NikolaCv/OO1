@@ -26,6 +26,11 @@ string Stajaliste::getName() const
 	return name;
 }
 
+const Lista<Gradska_linija*>& Stajaliste::getLines() const
+{
+	return lines;
+}
+
 void Stajaliste::removeLine(Gradska_linija * line)
 {
 	for(lines.moveCurrentAtStart(); lines.doesCurrentExist(); lines.moveCurrent())

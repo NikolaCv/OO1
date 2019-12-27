@@ -19,6 +19,7 @@ public:
 	int getTag() const;
 	int getZone() const;
 	string getName() const;
+	const Lista<Gradska_linija*>& getLines() const;
 	void removeLine(Gradska_linija* line);
 
 	friend bool operator==(const Stajaliste& station1, const Stajaliste& station2);

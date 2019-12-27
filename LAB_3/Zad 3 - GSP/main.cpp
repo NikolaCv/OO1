@@ -209,18 +209,18 @@ void testLinija()
 
 void testMreza()
 {
-	Stajaliste* ustanicka = new Stajaliste(1, "ustanicka", 1);
+	Stajaliste ustanicka = Stajaliste(1, "ustanicka", 1);
 	Stajaliste* koste1 = new Stajaliste(2, "koste trifkovica", 1);
 	Stajaliste* mite1 = new Stajaliste(3, "mite ruzica", 1);
 	Stajaliste* velizar1 = new Stajaliste(4, "velizara kosanovica", 1);
 	Stajaliste* cvetko1 = new Stajaliste(5, "cvetkova pijaca", 1);
 
 	Lista<Stajaliste*> list;
-	((((list += ustanicka) += koste1) += mite1) += velizar1) += cvetko1;
+	((((list += &ustanicka) += koste1) += mite1) += velizar1) += cvetko1;
 	
 	Gradska_linija sedmica("7", list);
 	Lista<Stajaliste*> list2;
-	((list2 += ustanicka) += mite1) += velizar1;
+	((list2 += &ustanicka) += mite1) += velizar1;
 	Gradska_linija petica("5L", list2);
 
 	Mreza beograd;
@@ -230,7 +230,13 @@ void testMreza()
 
 	cout << beograd << endl;
 
-	delete ustanicka;
+	cout << "Stajaliste Ustanicka:" << endl;
+
+	for (ustanicka.getLines().moveCurrentAtStart(); ustanicka.getLines().doesCurrentExist(); ustanicka.getLines().moveCurrent()) {
+		std::cout << *ustanicka.getLines().getCurrentData() << std::endl;
+	}
+
+
 	delete koste1;
 	delete mite1;
 	delete velizar1;
